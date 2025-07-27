@@ -1,0 +1,269 @@
+[
+  {
+    "id": "robbie",
+    "name": "Robbie Purvis",
+    "summary": "Detecting Ramalina lichen using spectral unmixing.",
+    "description": "Robbie is investigating the feasibility of detecting the presence of Ramalina menziesii, a lichen species, using imaging spectroscopy. His approach involves simulating spectral mixtures at varying levels of fungal coverage, then applying spectral unmixing techniques to estimate the abundance of Ramalina in mixed pixels. Using a Python-based synthetic data pipeline, Robbie generates mixtures from real endmember spectra stored in CSV format—representing pure spectra of soil, vegetation, and the target fungus. He tests limits of detection (LOD) for fungal presence and may expand the work to real airborne imagery (AVIRIS-3 L2A) over known lichen habitats. His analysis contributes to the advancement of fungal detection in remote sensing."
+,    "analysis": [
+      "Use linear spectral unmixing to simulate various percentage mixes (e.g., 5–50%) of Ramalina within each pixel",
+      "Quantify how accuracy of unmixing degrades with lower percentages",
+      "Apply models to real AVIRIS data over known lichen areas and assess whether Ramalina abundance is detectable",
+      "Compare estimated vs. true fractional coverage to determine minimum detection threshold"
+    ],
+    "notebook": "notebooks/robbie.ipynb",
+    "image": "images/robbie.png"
+  },
+  {
+    "id": "nimay",
+    "name": "Nimay Mahajan",
+    "summary": "Improving evapotranspiration modeling with SMA-derived vegetation fractions.",
+    "description": "Nimay’s project focuses on improving evapotranspiration (ET) estimates by comparing traditional NDVI-based approaches with Spectral Mixture Analysis (SMA)-derived vegetation fraction inputs. Using EMIT imagery, he performs Principal Component Analysis (PCA) followed by SMA to estimate sub-pixel vegetation fractions. These refined vegetation inputs are then used to drive the PT-JPL ET model, producing ET, PET, and latent heat estimates. Nimay compares outputs from both NDVI and SMA inputs spatially and statistically, highlighting differences in modeled ET rates. If available, he plans to validate model outputs with ground-based flux tower observations. This work explores how sub-pixel vegetation detail impacts hydrologic modeling and remote sensing–based water resource assessments."
+    ,"analysis": [
+      "Perform PCA and SMA on EMIT imagery to estimate sub-pixel vegetation fraction",
+      "Run the PT-JPL ET model using both NDVI and SMA-derived vegetation inputs",
+      "Compare model output (ET, PET, latent heat) spatially and statistically",
+      "Validate ET estimates against ground-based flux tower data (if available)"
+    ],
+    "notebook": "notebooks/nimay.ipynb",
+    "image": "images/nimay.png"
+  },
+  {
+    "id": "charlotte",
+    "name": "Charlotte Perry",
+    "summary": "Mapping geothermal mud features using spectroscopy and thermal data.",
+    "description": "Charlotte is analyzing geothermal mud features in the southeast Salton Sea region by integrating spectroscopy and thermal remote sensing data. Her study overlays mineral composition and land surface temperature (LST) rasters onto mapped mudpot locations using spatial joins. She extracts zonal statistics for key features such as mineral abundance and temperature anomalies at each site. Using clustering and correlation techniques, she identifies distinguishing characteristics of geothermal features and explores their potential for hazard monitoring."
+, "analysis": [
+      "Overlay mineral maps and LST rasters on mudpot locations using spatial join",
+      "Extract zonal statistics (mean, std, range) of minerals and temperature at each site",
+      "Use clustering or correlation analysis to identify distinguishing features near mudpots",
+      "Map areas with similar mineral and thermal signatures to identify new potential geothermal sites"
+    ],
+    "notebook": "notebooks/charlotte.ipynb",
+    "image": "images/charlotte.png"
+  },
+  {
+    "id": "kyra",
+    "name": "Kyra Shimbo",
+    "summary": "Analyzing drivers of burn severity in the 2024 Lake Fire using SMA and machine learning.",
+     "description": "Kyra is investigating the drivers of burn severity in the 2024 Lake Fire in Santa Barbara County, California. She derives fractional vegetation cover and canopy water content using Spectral Mixture Analysis (SMA) on pre- and post-fire EMIT imagery. Burn severity is quantified using the difference in Normalized Burn Ratio (dNBR). All remote sensing layers are spatially aligned and resampled before being input into a Random Forest Regression model to determine the importance of various predictors. Kyra’s project improves understanding of wildfire risk and vegetation vulnerability."
+,   "analysis": [
+      "Derive fractional cover and canopy water content using SMA on EMIT data",
+      "Calculate burn severity using dNBR (difference in Normalized Burn Ratio)",
+      "Align and resample all variables to a common resolution",
+      "Use Random Forest Regression to determine feature importance of predictors",
+      "Visualize spatial patterns and validate model accuracy with ground or fire boundary data"
+    ],
+    "notebook": "notebooks/kyra.ipynb",
+    "image": "images/kyra.png"
+  },
+  {
+    "id": "patricia",
+    "name": "Patricia Sibulo",
+    "summary": "Mapping flood extent after Hurricane Sally using Sentinel-1 SAR in Google Earth Engine.",
+   "description": "Patricia is using Sentinel-1 Synthetic Aperture Radar (SAR) data to map flooding from Hurricane Sally in urban regions. Working in Google Earth Engine (GEE), she applies SAR preprocessing steps such as speckle filtering, polarization ratioing (VV/VH), and backscatter thresholding. She then classifies flooded areas using both unsupervised and supervised techniques. Flood extents are intersected with FEMA flood hazard zones for comparison. She calculates confusion matrices and area-based metrics to evaluate flood detection accuracy in urban landscapes."
+,   "analysis": [
+      "Apply SAR preprocessing (e.g., speckle filtering, VV/VH ratio, backscatter thresholding)",
+      "Classify inundated areas using GEE’s threshold or supervised classification",
+      "Export water extent and intersect with flood hazard zones",
+      "Compute confusion matrix and area-based agreement statistics",
+      "Visualize results with overlay maps of predicted vs. known flood-prone areas"
+    ],
+    "notebook": "notebooks/patricia.ipynb",
+    "image": "images/patricia.png"
+  },
+  {
+    "id": "brianna",
+    "name": "Brianna Francis",
+    "summary": "Detecting post-fire road damage in Altadena, CA using AVIRIS reflectance and UMAP.",
+   "description": "Brianna is studying post-fire damage to asphalt roads caused by the 2025 Eaton Fire in Altadena, California. She extracts road surface reflectance from AVIRIS post-fire imagery and compares spectral signatures of burned versus unburned roads using average reflectance and principal component analysis. She employs Uniform Manifold Approximation and Projection (UMAP) to visualize separation between burned and unburned roads in lower-dimensional space. If separability is high, she plans to classify road damage for broader monitoring applications."
+,    "analysis": [
+      "Extract road spectra from post-fire AVIRIS imagery based on known road locations",
+      "Compare burned vs. unburned spectra using mean reflectance and principal components",
+      "Apply UMAP to explore separation in low-dimensional space",
+      "Optionally train a supervised classifier if spectral clusters are well-separated",
+      "Map predicted damaged roads and compare to fire boundaries"
+    ],
+    "notebook": "notebooks/brianna.ipynb",
+    "image": "images/brianna.png"
+  },
+  {
+    "id": "maria",
+    "name": "Maria McKellar",
+    "summary": "Tracking seasonal kelp trends and environmental drivers in the Russian Far East.",
+  "description": "Maria is examining long-term trends in kelp canopy extent in the Russian Far East, particularly the Kamchatka Peninsula, using satellite data from 1987 to present. She processes netCDF files containing quarterly kelp distribution data and aligns it with environmental drivers such as sea surface temperature (SST), sea surface height (SSH), and chlorophyll-a. Time-series decomposition and rolling averages are applied to detect seasonal trends. Maria investigates correlations between kelp and climate anomalies and identifies change points in the kelp time series."
+,    "analysis": [
+      "Convert and clean quarterly kelp extent time series from netCDF",
+      "Match kelp extent data to SST, SSH, and chlorophyll variables temporally and spatially",
+      "Calculate seasonal trends using rolling averages or time-series decomposition",
+      "Conduct correlation or regression analysis between kelp area and environmental variables",
+      "Map changes in kelp area over time alongside SST or chlorophyll anomaly fields"
+    ],
+    "notebook": "notebooks/maria.ipynb",
+    "image": "images/maria.png"
+  },
+  {
+    "id": "kiersten",
+    "name": "Kiersten Sundell",
+    "summary": "Comparing PM2.5 and PM10 trends at EPA monitoring sites across years.",
+   "description": "Kiersten is analyzing long-term air quality trends using PM2.5 and PM10 data from EPA monitoring stations. She cleans and consolidates Excel datasets by year and particulate matter type, aggregates site-wise and daily averages, and visualizes pollution levels over time. Her plots highlight site-level trends, interannual variability, and possible exceedances of air quality standards. If time allows, she may correlate pollution trends with meteorological or geographic factors. Kiersten’s analysis provides an overview of particulate pollution in U.S. cities over time."
+,    "analysis": [
+      "Parse and clean all Excel sheets by year and PM type",
+      "Aggregate daily and site-wise averages",
+      "Visualize average pollution levels per site by year and type",
+      "Identify sites with significant increases/decreases across time",
+      "(Optional) Correlate trends with location or meteorological conditions"
+    ],
+    "notebook": "notebooks/kiersten.ipynb",
+    "image": "images/kiersten.png"
+  },
+  {
+    "id": "justin",
+    "name": "Justin Staley",
+    "summary": "Analyzing boundary layer dynamics and aerosol profiles from SARP missions.",
+   "description": "Justin is studying how variations in the atmospheric boundary layer (BL) affect vertical distributions of aerosol species during NASA SARP missions in the Los Angeles basin. He aligns vertical profiles of chemical species with respect to time, location, and BL height, comparing years 2021 and 2025. He highlights events where shallow BLs may have caused elevated surface pollution levels and plots altitude-resolved concentrations of NO₃, NH₄, and O₃. His analysis explores boundary layer dynamics and their influence on pollution dispersion."
+,    "analysis": [
+      "Align vertical profiles by location and time of day",
+      "Plot species concentrations vs. altitude with BL boundaries overlaid",
+      "Compare 2025 vs. 2021 for seasonal contrasts",
+      "Highlight specific events where BL compression affected pollutant buildup",
+      "Correlate changes in BL with spikes in NO₃, NH₄, and O₃"
+    ],
+    "notebook": "notebooks/justin.ipynb",
+    "image": "images/justin.png"
+  },
+  {
+    "id": "owen",
+    "name": "Owen Rader",
+    "summary": "Modeling wildfire behavior in California using FlamMap and wind scenarios.",
+    "description": "Owen is modeling wildfire spread in a region of California using FlamMap 6 simulations under varying wind conditions. He runs three simulations with different wind speeds and compares outputs such as rate of spread, flame length, and fireline intensity. He visualizes these metrics through maps and histograms, identifying how fire behavior shifts under different atmospheric scenarios. Owen also explores interactive visualization methods and discusses policy implications for fire-prone regions."
+,  "analysis": [
+      "Run FlamMap simulations for each wind speed scenario",
+      "Export results: rate of spread, flame length, fireline intensity",
+      "Compare metrics across the three runs using maps and histograms",
+      "Generate an interactive or side-by-side visual display of fire spread differences",
+      "Discuss policy implications for regions with increasing wind variability"
+    ],
+    "notebook": "notebooks/owen.ipynb",
+    "image": "images/owen.png"
+  },
+  {
+    "id": "maggie",
+    "name": "Maggie Rasic",
+    "summary": "Investigating VOC trends in estuaries across tidal cycles.",
+   "description": "Maggie is investigating methane emissions from California dairies using airborne and satellite remote sensing data. Her project focuses on identifying large methane point sources and estimating emission rates using tools like TROPOMI and AVIRIS. She overlays methane plumes with facility maps to attribute emissions and compares findings with reported inventories. Maggie's work supports greenhouse gas monitoring and contributes to emission mitigation efforts in the agricultural sector."
+,   "analysis": [
+      "Clean and normalize VOC data (e.g., handle missing values, standardize units)",
+      "Compare gas levels across tides and sites using violin/boxplots",
+      "Perform Mann-Kendall trend tests on VOCs over time",
+      "Correlate VOCs with latitude or site location to check for spatial gradients",
+      "Visualize with interactive maps and tide-over-time graphs"
+    ],
+    "notebook": "notebooks/maggie.ipynb",
+    "image": "images/maggie.png"
+  },
+  {
+    "id": "ryan",
+    "name": "Ryan Glenn",
+    "summary": "Modeling fire-emitted VOCs and ozone production using chemical reaction models.",
+    "description": "Ryan is modeling ozone formation from volatile organic compounds (VOCs) emitted by the 2025 Palisades wildfire. He uses Python-based chemical models to simulate VOC decay and reactions with NOx under different atmospheric conditions. His analysis tracks key ozone precursors like ethene and isoprene and calculates their contribution to ozone production over a 24-hour period. Rate-of-change plots and concentration time series highlight the top VOC contributors. Ryan’s work aids in understanding post-fire air quality impacts."
+,   "analysis": [
+      "Solve ODEs for gas-phase chemical reactions (e.g., using SciPy)",
+      "Track species concentrations over time (0–24 hrs post-emission)",
+      "Calculate ozone production potential for each VOC",
+      "Rank species by contribution to ozone change",
+      "Visualize species decay and ozone rise using time-series plots"
+    ],
+    "notebook": "notebooks/ryan.ipynb",
+    "image": "images/ryan.png"
+  },
+  {
+    "id": "melanie",
+    "name": "Melanie Lin",
+    "summary": "Validating SAR-based kelp detection against AVIRIS-NG imagery in South Africa.",
+    "description": "Melanie is studying surface reflectance patterns associated with different crop types in California's Central Valley using AVIRIS and EMIT hyperspectral data. Her goal is to determine whether crops such as almonds, grapes, or alfalfa can be spectrally distinguished based on reflectance signatures and temporal trends. She uses PCA and clustering methods to explore separability and validate results with crop inventory maps. Melanie’s project supports agricultural monitoring and land use classification using imaging spectroscopy."
+,   "analysis": [
+      "Align SAR and AVIRIS images spatially and temporally",
+      "Generate kelp detection masks from both sources",
+      "Compare binary detection maps using confusion matrix metrics",
+      "Analyze misclassification patterns by region or water depth",
+      "Evaluate feasibility of SAR for long-term kelp monitoring"
+    ],
+    "notebook": "notebooks/melanie.ipynb",
+    "image": "images/melanie.png"
+  },
+  {
+    "id": "alexander",
+    "name": "Alexander Lacayo",
+    "summary": "Analyzing El Niño–related SST anomalies along the Peruvian coast using OISST.",
+  "description": "Alexander is analyzing long-term sea surface temperature (SST) anomalies along the Peruvian coast using NOAA OISST datasets from 1980 to 2024. He decomposes the SST time series to isolate seasonal and trend components and correlates anomalies with ENSO events using the Niño 3.4 index. He identifies strong El Niño and La Niña years and visualizes SST effects along the coastline. Alexander’s study offers insight into climate variability and its coastal ocean impacts in the eastern Pacific."
+,    "analysis": [
+      "Subset SST time series for Peruvian coastal region",
+      "Detrend and decompose time series to isolate seasonal and ENSO signals",
+      "Correlate local SST with ENSO indices and upwelling proxies",
+      "Visualize SST anomalies during strong El Niño and La Niña events",
+      "Perform significance testing on long-term SST changes"
+    ],
+    "notebook": "notebooks/alexander.ipynb",
+    "image": "images/alexander.png"
+  },
+  {
+    "id": "logan",
+    "name": "Logan Jewell",
+    "summary": "Tracking natural oil slicks off Santa Barbara with Sentinel-2 and GEE.",
+    "description": "Logan is using Sentinel-2 multispectral imagery to detect oil slicks in the Gulf of Mexico following reported oil releases. Working in Google Earth Engine (GEE), he applies band ratios (e.g., B4/B8, B3/B11) to highlight slick anomalies and overlays wind direction to examine dispersion patterns. Logan evaluates classification accuracy by comparing his output to NOAA oil spill reports. His work aims to improve remote sensing methods for marine pollution detection and emergency response."
+,    "analysis": [
+      "Refine training dataset with spatially balanced sampling",
+      "Engineer GLCM-based texture bands for contextual input",
+      "Evaluate classifier performance using cross-validation",
+      "Plot temporal trend of slick frequency and coverage",
+      "Consider switching to CNN or patch-based classifier if time permits"
+    ],
+    "notebook": "notebooks/logan.ipynb",
+    "image": "images/logan.png"
+  },
+  {
+    "id": "grace",
+    "name": "Grace Woerner",
+    "summary": "Validating PACE chlorophyll-a with ARGO floats after Typhoon Shanshan.",
+  "description": "Grace is validating satellite-derived chlorophyll-a concentrations from NASA's PACE mission using in situ ARGO float data after Typhoon Shanshan in the West Pacific. Her analysis compares vertical chlorophyll profiles from ARGO floats to surface chlorophyll estimates captured by PACE. She examines how typhoon-induced ocean mixing impacts chlorophyll distribution and timing of phytoplankton blooms. Grace also analyzes changes in ocean stratification before and after the storm to understand biological and physical responses in the upper ocean."
+,    "analysis": [
+      "Align ARGO and PACE data by time and location",
+      "Interpolate ARGO profiles to match surface chlorophyll range",
+      "Compute differences and RMSE between datasets",
+      "Analyze chlorophyll changes before/after Typhoon Shanshan",
+      "Visualize vertical profiles and compare to PACE pixel value"
+    ],
+    "notebook": "notebooks/grace.ipynb",
+    "image": "images/grace.png"
+  },
+  {
+    "id": "martha",
+    "name": "Martha Santiago",
+    "summary": "Comparing rural aerosol pollution in Delmarva and Central Valley for EJ.",
+   "description": "Martha is investigating air quality in rural environmental justice (EJ) communities by comparing CH₄ and NH₄ levels in California’s Central Valley and the Delmarva Peninsula. She uses aircraft and satellite datasets to produce scatterplots, regional averages, and pollutant overlays on community maps. Her analysis seeks to identify spatial disparities in pollution exposure and their relationship to land use patterns. Martha’s findings may support improved air monitoring and environmental justice policies in underserved regions."
+,    "analysis": [
+      "Subset flight data for each region",
+      "Compute average and peak concentrations of CH₄ and NH₄",
+      "Compare vertical aerosol profiles between the two regions",
+      "Visualize pollutant distribution overlaid on population or land use maps",
+      "(Optional) Include socioeconomic overlays to link to environmental justice indicators"
+    ],
+    "notebook": "notebooks/martha.ipynb",
+    "image": "images/martha.png"
+  },
+  {
+    "id": "eli",
+    "name": "Eli Garcia",
+    "summary": "Analyzing SARP P-3 low-altitude flights for airport pollution signatures.",
+    "description": "Eli is analyzing low-altitude flight segments from NASA SARP’s P-3B aircraft missions in 2024 and 2025 to study atmospheric composition near airports. Using Igor Pro and Python, he extracts CH₄, NH₄, and aerosol profiles for each low-altitude pass and compares patterns across different airports and missions. Eli is interested in detecting pollution signatures linked to aviation and generating visual summaries such as vertical plots and pie charts for chemical distributions. His work contributes to understanding airport-related emissions."
+,    "analysis": [
+      "Isolate flight legs below a certain altitude threshold (e.g., 1000m)",
+      "Calculate mean pollutant levels per airport or date",
+      "Compare vertical concentration profiles across dates",
+      "Generate pie charts of species contribution or stacked bar plots by location",
+      "Transition pie chart workflows from Igor to Python for scalability"
+    ],
+    "notebook": "notebooks/eli.ipynb",
+    "image": "images/eli.png"
+  }
+]
