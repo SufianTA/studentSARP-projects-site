@@ -313,7 +313,8 @@
     const modalNotebookLink = document.getElementById('modalNotebookLink');
 
     students.forEach(student => {
-      const firstName = student.name.split(' ')[0].toLowerCase();
+      const firstName = student.name.split(' ')[0];
+
       const htmlPath = `html/${firstName}.html`;
       const notebookPath = `notebooks/${firstName}.ipynb`;
 
