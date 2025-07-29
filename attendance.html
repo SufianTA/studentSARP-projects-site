@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance - NASA SARP 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- 🔗 Navigation Bar -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="font-bold text-xl">NASA SARP</div>
+      <div class="space-x-4 text-sm">
+        <a href="index.html" class="hover:underline">Student Projects</a>
+        <a href="lectures.html" class="hover:underline">Lectures</a>
+        <a href="demo.html" class="hover:underline">Demo Projects</a>
+        <a href="utilities.html" class="hover:underline">Utilities</a>
+        <a href="attendance.html" class="hover:underline font-semibold text-blue-600">Attendance</a>
+        <a href="reviews.html" class="hover:underline">Reviews</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center mb-8">📋 Attendance Tracker</h1>
+
+    <!-- 📊 Chart -->
+    <div class="mb-12 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-4">Total Days Present</h2>
+      <canvas id="attendanceChart" class="w-full max-w-4xl mx-auto h-[500px]"></canvas>
+    </div>
+
+    <!-- 📅 Table -->
+    <div class="overflow-x-auto bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-4">Full Attendance Table</h2>
+      <table id="attendanceTable" class="min-w-full text-sm border-collapse border">
+        <thead class="bg-gray-200">
+          <tr id="tableHeader"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const rawData = [
+      ["Francis, Brianna","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Project Sync with Mentor and Other groups wanted to work on the project demo I gave them","Yes"],
+      ["Gallen, Riley","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Garcia, Eli","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Garside, Jacob","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Glenn, Ryan","Yes","Yes","Yes","No","No","No","No","-","Yes"],
+      ["Jewell, Logan","Yes","Yes","Yes","No","No","Yes","Yes","-","Yes"],
+      ["Kinlaw, Sarah","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Kramer, Lilly","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Lacayo, Alexander","Yes","Yes","Yes","No","No","No","Yes","-","Yes"],
+      ["Lin, Melanie","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Lund, John","Yes","Yes","Yes","No","No","No","No","-","Yes"],
+      ["Mahajan, Nimay","Yes","Yes","Yes","Yes","No","No","No","-","Yes"],
+      ["McKellar, Molly","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Perry, Charlotte","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Purvis, Robbie","Yes","Yes","Yes","Yes","Yes","No","No","-","Yes"],
+      ["Rader, Owen","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Rasic, Maggie","Yes","Yes","Yes","Yes","No","No","No","-","Yes"],
+      ["Santiago, Martha","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Shaner, Stephen","Yes","Yes","Yes","No","No","No","No","-","Yes"],
+      ["Shimbo, Kyra","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Sibulo, Patricia","Yes","Yes","Yes","Yes","No","No","No","-","Yes"],
+      ["Staley, Justin","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Sundell, Kiersten","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"],
+      ["Woerner, Grace","Yes","Yes","Yes","Yes","Yes","Yes","Yes","-","Yes"]
+    ];
+
+    const dates = ["7/7/2025","7/8/2025","7/9/2025","7/10/2025","7/11/2025","7/14/2025","7/15/2025","7/16/2025","7/17/2025"];
+
+    // Build table
+    const tableHeader = document.getElementById('tableHeader');
+    tableHeader.innerHTML = `<th class="border px-2 py-1">Student</th>` + dates.map(d => `<th class="border px-2 py-1">${d}</th>`).join('');
+
+    const tableBody = document.getElementById('tableBody');
+    rawData.forEach((row, i) => {
+      const displayRow = [`Student ${i + 1}`, ...row.slice(1)];
+      const tr = document.createElement('tr');
+      displayRow.forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        td.className = "border px-2 py-1 text-center";
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+
+    // Chart data
+    const labels = rawData.map((_, i) => `Student ${i + 1}`);
+    const counts = rawData.map(r => r.slice(1).filter(x => x.trim().toLowerCase() === 'yes').length);
+
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const gradient = ctx.createLinearGradient(0, 0, 600, 0);
+    gradient.addColorStop(0, '#60a5fa');  // blue-400
+    gradient.addColorStop(1, '#3b82f6');  // blue-500
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Days Present',
+          data: counts,
+          backgroundColor: gradient,
+          borderRadius: 5
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📊 Student Reviews Summary</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-4xl mx-auto px-6 py-10">
+    <h1 class="text-3xl font-bold text-center mb-6">📊 Student Reviews Summary</h1>
+
+    <p class="mb-6 text-lg leading-relaxed">
+      Over the course of the lectures, students consistently reported strong understanding and engagement. Most students rated their understanding, comfort with Python concepts, and overall class satisfaction at the highest levels. Ratings for excitement about future sessions remained high across the board. This indicates a positive learning environment with strong engagement and comprehension.
+    </p>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <canvas id="reviewChart" width="400" height="300"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('reviewChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Understanding of Topics',
+          'Comfort with Python Concepts',
+          'Concept Clarity',
+          'Enjoyment of Class',
+          'Excitement for Next Class'
+        ],
+        datasets: [{
+          label: 'Average Rating (1–5)',
+          data: [4.33, 4.40, 4.33, 4.27, 4.73],
+          backgroundColor: [
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(96, 165, 250, 0.7)',
+            'rgba(37, 99, 235, 0.7)',
+            'rgba(29, 78, 216, 0.7)',
+            'rgba(30, 64, 175, 0.7)'
+          ],
+          borderColor: [
+            'rgba(59, 130, 246, 1)',
+            'rgba(96, 165, 250, 1)',
+            'rgba(37, 99, 235, 1)',
+            'rgba(29, 78, 216, 1)',
+            'rgba(30, 64, 175, 1)'
+          ],
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 5,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        },
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `Average: ${context.raw.toFixed(2)}`;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
