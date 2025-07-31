@@ -336,12 +336,12 @@
 
       card.innerHTML = `
         <iframe src="${htmlPath}" class="rounded-md mb-4 w-full h-48 shadow border" loading="lazy"></iframe>
-        <h2 class="text-xl font-bold mb-2">${student.name}</h2>
+        <h2 class="text-xl font-bold mb-2">Student</h2>
         <p class="text-sm text-gray-600 mb-4">${student.summary}</p>
       `;
 
       card.addEventListener('click', () => {
-        modalName.textContent = student.name;
+        modalName.textContent = "Student";
         modalSummary.textContent = student.summary;
         modalDescription.textContent = student.description;
         modalAnalysis.innerHTML = student.analysis.map(item => `<li>${item}</li>`).join('');
